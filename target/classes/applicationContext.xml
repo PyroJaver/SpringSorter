@@ -6,5 +6,10 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean id="sorter" class="sorts.BubbleSorter"/>
+    <bean id="sorter" class="sorts.MergeSorter"/>
+    <bean id="output" class="inputOutput.output.ConsoleOutput"/>
+    <bean id="input" class="inputOutput.Input.ConsoleInput"/>
+    <bean id ="inputFile" class="java.io.File">
+        <constructor-arg type="java.lang.String" value="C:\Users\kekec\Desktop\file.txt"/>
+    </bean>
 </beans>
