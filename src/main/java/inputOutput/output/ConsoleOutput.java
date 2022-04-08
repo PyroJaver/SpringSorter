@@ -1,6 +1,5 @@
 package inputOutput.output;
 
-import inputOutput.output.Output;
 
 public class ConsoleOutput implements Output {
 

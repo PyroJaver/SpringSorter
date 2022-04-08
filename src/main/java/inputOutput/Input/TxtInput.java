@@ -1,6 +1,5 @@
 package inputOutput.Input;
 import inputOutput.splitters.Splitter;
-import inputOutput.splitters.StrictSplitter;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
@@ -13,8 +12,12 @@ public class TxtInput implements Input {
                 ClassPathXmlApplicationContext("applicationContext.xml");
         File input = context.getBean("inputFile", File.class);
         Scanner scannedArray = new Scanner(input);
-        Splitter splitter = new StrictSplitter();
-        splitter.toSplit(scannedArray);
-       return splitter.toSplit(scannedArray);
+        String stringArray = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        while (scannedArray.hasNextLine()) {
+            stringArray = stringBuilder.append(scannedArray.nextLine()).toString();
+        }
+        Splitter splitter = context.getBean("split", Splitter.class);
+       return splitter.toSplit(stringArray);
     }
 }
