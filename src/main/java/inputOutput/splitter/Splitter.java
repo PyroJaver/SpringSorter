@@ -1,15 +1,20 @@
-package inputOutput.splitters;
+package inputOutput.splitter;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Arrays;
 
-public class NotStrictSplitter implements Splitter{
+public class Splitter implements toSplit {
 //"\\s+"
+
     @Override
     public int[] toSplit(String stringArray) {
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+         RegexArg regexArg = context.getBean("regexArg", RegexArg.class);
         int[] unsortedArray = new int[0];
         try {
             unsortedArray = Arrays.stream(stringArray
-                            .split("[^\\d-]+")).filter(number -> number != null)
+                            .split(regexArg.getRegexArg())).filter(number -> number != null)
                        .mapToInt(Integer::parseInt)
                     .toArray();
 

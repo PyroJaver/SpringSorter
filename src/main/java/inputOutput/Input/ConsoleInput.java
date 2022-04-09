@@ -1,6 +1,6 @@
 package inputOutput.Input;
 
-import inputOutput.splitters.Splitter;
+import inputOutput.splitter.toSplit;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
@@ -13,7 +13,7 @@ public class ConsoleInput implements Input {
         System.out.println("Введите числа, разделяя их пробелом");
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         context.refresh();
-        Splitter splitter = context.getBean("split", Splitter.class);
+        toSplit splitter = context.getBean("split", toSplit.class);
         return splitter.toSplit(scannedArray.nextLine());
     }
 }

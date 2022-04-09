@@ -1,5 +1,5 @@
 package inputOutput.Input;
-import inputOutput.splitters.Splitter;
+import inputOutput.splitter.toSplit;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
@@ -17,7 +17,7 @@ public class TxtInput implements Input {
         while (scannedArray.hasNextLine()) {
             stringArray = stringBuilder.append(scannedArray.nextLine()).toString();
         }
-        Splitter splitter = context.getBean("split", Splitter.class);
+        toSplit splitter = context.getBean("split", toSplit.class);
        return splitter.toSplit(stringArray);
     }
 }

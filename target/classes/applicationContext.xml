@@ -6,21 +6,41 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-    <!--Управление типом сортировки-->
+
+
+    <!--Управление типом сортировки: MergeSorter, BubbleSorter, SelectionSorter-->
     <bean id="sorter" class="sorts.MergeSorter"/>
+
+    <!--Управление типом ввода: ConsoleInput, TxtInput-->
+    <bean id="input" class="inputOutput.Input.ConsoleInput"/>
+
+
     <!--Управление типом вывода-->
     <bean id="output" class="inputOutput.output.ConsoleOutput"/>
-    <!--Управление типом ввода-->
-    <bean id="input" class="inputOutput.Input.ConsoleInput"/>
+
+
     <!--Аргумент конструктора - путь к файлу с сортируемым массивом-->
     <bean id ="inputFile" class="java.io.File">
         <constructor-arg type="java.lang.String" value="C:\Users\kekec\Desktop\file.txt"/>
     </bean>
+
+    <!--Аргумент конструктора - путь к файлу, в который будет записан отсортированный массив-->
     <bean id ="outputFile" class="java.io.File">
         <constructor-arg type="java.lang.String" value="C:\Users\kekec\Desktop\file1.txt"/>
     </bean>
-    <!--Выбор типа разделителя массива-->
-    <bean id="split" class="inputOutput.splitters.StrictSplitter">
+
+    <bean id="split" class="inputOutput.splitter.Splitter">
     </bean>
 
+    <bean id="regexArg" class="inputOutput.splitter.RegexArg">
+        <!--Выбор режима работы разделителя массива. При значении аргумента [^\d-]+ допустимы любые символы,
+        они будут восприняты как разделители. При значении \\s+ в качестве разделителей допустимы только пробелы -->
+        <constructor-arg value = "[^\d-]+"/>
+    </bean>
+
+
+    <bean id="countToNextLine" class="inputOutput.output.CountToNextLine">
+        <!--Выбор количества элементов массива, при выводе которого вывод перенесётся на следующую строку-->
+    <constructor-arg value = "10"/>
+    </bean>
 </beans>
