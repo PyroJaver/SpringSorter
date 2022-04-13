@@ -4,21 +4,12 @@ import inputOutput.Input.Input;
 import inputOutput.output.Output;
 import sorts.Sorter;
 
-import java.util.Arrays;
 
 public abstract class AbstractLogger implements Logger {
     private Sorter typeOfSort;
     private Input typeOfInput;
     private Output typeOfOutput;
     private int lengthOfArray;
-
-  /*  public String getClassName(Object obj){
-    String[] classNameArr = (String[]) Arrays.stream(obj.getClass().getName()
-                    .split("."))
-            .toArray();
-    String className = classNameArr[classNameArr.length-1];
-        return className;
-    }*/
 
     public AbstractLogger() {
     }

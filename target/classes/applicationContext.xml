@@ -12,7 +12,7 @@
     <bean id="sorter" class="sorts.MergeSorter"/>
 
     <!--Управление типом ввода: ConsoleInput, TxtInput-->
-    <bean id="input" class="inputOutput.Input.TxtInput"/>
+    <bean id="input" class="inputOutput.Input.ConsoleInput"/>
 
 
     <!--Управление типом вывода: ConsoleOutput, TxtOutput-->
@@ -44,7 +44,7 @@
     <constructor-arg value = "10"/>
     </bean>
 
-    <bean id ="logger" class ="logging.TxtLogger">
+    <bean id ="logger" class ="logging.DBLogger">
         <property name="typeOfSort" ref = "sorter"></property>
         <property name="typeOfInput" ref = "input"></property>
         <property name="typeOfOutput" ref = "output"></property>

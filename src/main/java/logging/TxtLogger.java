@@ -33,6 +33,6 @@ public class TxtLogger extends AbstractLogger{
         logWriter.print(getLengthOfArray());
         logWriter.append('\n');
    logWriter.close();
-     System.out.println(getLengthOfArray());
+
     }
 }
