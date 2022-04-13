@@ -15,8 +15,9 @@ public class TxtOutput implements Output{
             if (i % count == 0 && i != 0){
                 pw.println();
             }
-         System.out.println("Массив успешно отсротирован и записан в файл");
+
         }
+        System.out.println("Массив успешно отсротирован и записан в файл");
         pw.close();
     }
 }

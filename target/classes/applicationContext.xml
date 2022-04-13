@@ -12,10 +12,10 @@
     <bean id="sorter" class="sorts.MergeSorter"/>
 
     <!--Управление типом ввода: ConsoleInput, TxtInput-->
-    <bean id="input" class="inputOutput.Input.ConsoleInput"/>
+    <bean id="input" class="inputOutput.Input.TxtInput"/>
 
 
-    <!--Управление типом вывода-->
+    <!--Управление типом вывода: ConsoleOutput, TxtOutput-->
     <bean id="output" class="inputOutput.output.ConsoleOutput"/>
 
 
@@ -40,7 +40,18 @@
 
 
     <bean id="countToNextLine" class="inputOutput.output.CountToNextLine">
-        <!--Выбор количества элементов массива, при выводе которого вывод перенесётся на следующую строку-->
+        <!--Выбор количества элементов массива, при выводе которого будет осуществлён перенос строки-->
     <constructor-arg value = "10"/>
+    </bean>
+
+    <bean id ="logger" class ="logging.TxtLogger">
+        <property name="typeOfSort" ref = "sorter"></property>
+        <property name="typeOfInput" ref = "input"></property>
+        <property name="typeOfOutput" ref = "output"></property>
+    </bean>
+
+    <!--Аргумент конструктора - путь к файлу, в который будет записан лог-->
+    <bean id ="logFile" class="java.io.File">
+        <constructor-arg type="java.lang.String" value="C:\Users\kekec\Desktop\log.txt"/>
     </bean>
 </beans>
